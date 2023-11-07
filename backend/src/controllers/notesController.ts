@@ -5,8 +5,8 @@ import mongoose from 'mongoose';
 
 export  const getNotes:RequestHandler = async(req,res,next)=>{
     try{
-        //throw Error("MiddleWare Check")
-        const notes = await NoteModel.find().exec();
+      
+        const notes = await NoteModel.find().exec();      
         res.status(200).json(notes);
     }catch(error){
        next(error);
@@ -83,6 +83,8 @@ export const updateNote:RequestHandler<updateNoteParams,unknown, updateNoteBody,
 }
 
 export const deleteNote:RequestHandler = async(req,res,next)=>{
+    console.log("dhukse");
+    
     const noteId = req.params.noteId;
     try {
         if(!mongoose.isValidObjectId(noteId)){
@@ -92,6 +94,7 @@ export const deleteNote:RequestHandler = async(req,res,next)=>{
         if(!note){
             throw createHttpError(404,"Note not found");
         }
+        console.log("asdasdasd",note);        
         await note.deleteOne();
         res.sendStatus(204);
     } catch (error) {
