@@ -7,6 +7,8 @@ import Note from "./components/Note";
 import * as NotesApi from "./network/notes_api";
 import AddEditNoteDialog from "./components/AddEditNoteDialog";
 import { FaPlus } from "react-icons/fa";
+import SignUpModal from "./components/SignUpModal";
+import LoginModal from "./components/LoginModal";
 function App() {
   const [notes, setNotes] = useState<NoteModel[]>([]);
   const [showAddNoteDialog, setShowAddNoteDialog] = useState(false);
@@ -98,6 +100,18 @@ function App() {
           }}
         />
       )}
+      {
+        false && <SignUpModal
+        onDismiss={()=>{}}
+        onSignUpSuccessful={()=>{}}
+        />
+      }
+      {
+        false && <LoginModal
+        onDismiss={()=>{}}
+        onLoginSuccessfull={()=>{}}
+        />
+      }
     </Container>
   );
 }
